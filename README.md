@@ -14,3 +14,9 @@ $ chef_client2.json
 - cookbookの適用
 $ knife solo cook root@chef_client2
 ```
+
+### recipeの書き方メモ
+
+- not if
+  - 指定した条件が真でないなら実行
+  `* yum_package[httpd] action install (skipped due to not_if)`
