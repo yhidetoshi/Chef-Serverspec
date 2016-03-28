@@ -136,6 +136,7 @@ end
 - *file*
  - `cookbook_file`はノードへ転送
  - `file`はノード上のファイルを扱う
+<<<<<<< HEAD
 ```
 file "/usr/local/hogehoge/test_cookbook_file.txt" do
  content "chef test for file"
@@ -151,4 +152,20 @@ route "10.0.1.10/32" do
  gateway "ipaddress"
  device eth1
 end
+=======
+
+- **Attribute**
+ - テンプレートの中で変数が扱える
+
+chef-repo/cookbooks/wordpress/attributes/default.rb
+```
+default['mysql']['db_name'] = 'hoge'
+default['mysql']['user']['name']= 'hogeadmin'
+default['mysql']['user']['password'] = 'hogepassword'
+```
+
+/chef-repo/cookbooks/wordpress/templates/default/wp-config.php.erb
+```
+define('DB_NAME', '<%= @db_name %>');
+define('DB_USER', '<%= @db_user %>');
 ```
