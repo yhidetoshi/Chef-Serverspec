@@ -136,3 +136,13 @@ end
 - *file*
  - `cookbook_file`はノードへ転送
  - `file`はノード上のファイルを扱う
+
+- **Attribute**
+ - テンプレートの中で変数が扱える
+
+chef-repo/cookbooks/wordpress/attributes/default.rb
+```
+default['mysql']['db_name'] = 'hoge'
+default['mysql']['user']['name']= 'hogeadmin'
+default['mysql']['user']['password'] = 'hogepassword'
+```
