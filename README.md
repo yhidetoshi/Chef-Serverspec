@@ -81,6 +81,7 @@ end
 -> 実行は一度、キューに入り、実行処理の終盤に行われる.
 -> 即座に実行したい場合は`notifies :reload, 'service[httpd] :immediately`(immediatelyをつける)
 
+
 - **Subscribe**
   - 何かのリソースに変化があった場合にアクションする
 
@@ -145,6 +146,7 @@ file "/usr/local/hogehoge/test_cookbook_file.txt" do
  mode 755
  action :create
 end
+```
 
 - **route ルーティングテーブル**
 ```
@@ -152,7 +154,8 @@ route "10.0.1.10/32" do
  gateway "ipaddress"
  device eth1
 end
-=======
+```
+
 
 - **Attribute**
  - テンプレートの中で変数が扱える
@@ -169,3 +172,9 @@ default['mysql']['user']['password'] = 'hogepassword'
 define('DB_NAME', '<%= @db_name %>');
 define('DB_USER', '<%= @db_user %>');
 ```
+
+- **data_bags**
+ - chefで管理している各ノードで共通の設定とかを定義する
+  - user
+  - 鍵情報など暗号化して格納してセキュアに使うこともできる
+ 
