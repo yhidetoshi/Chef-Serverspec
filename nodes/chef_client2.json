@@ -1,6 +1,7 @@
 {
    "run_list": [
-	"recipe[httpd]"
+	"recipe[httpd]",
+        "recipe[perl]"
    ],
    "automatic":{
 	"ipaddress": "chef_client2"
