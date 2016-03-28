@@ -70,12 +70,12 @@ end
 - **Nofication(例)httpd.confが着替えられたら再起動する**
 ```
  template "httpd.conf" do
- 28  path "/etc/httpd/conf/httpd.conf"
- 29  owner "root"
- 30  group "rout"
- 31  mode 0644
- 32  notifies :reload, 'service[httpd]'
- 33 end
+   path "/etc/httpd/conf/httpd.conf"
+   owner "root"
+   group "rout"
+   mode 0644
+   notifies :reload, 'service[httpd]'
+ end
 ```
 -> `notifies :reload, 'service[httpd]`:第一引数にアクション、第二引数にリソースタイプを書く.
 -> 実行は一度、キューに入り、実行処理の終盤に行われる.
