@@ -67,7 +67,7 @@ end
 -> サービスを起動し、自動起動を登録 : `action [:enable, :start]`
 -> supports : `restart = >trueでなければchefはサービスのrestartを[stop + start]で代用するので可能であればrestartをtrueにした方が賢明`
 
-- **chef-server/clientで(例)httpd.confが着替えられたら再起動する**
+- **Nofication(例)httpd.confが着替えられたら再起動する**
 ```
  template "httpd.conf" do
  28  path "/etc/httpd/conf/httpd.conf"
@@ -77,4 +77,12 @@ end
  32  notifies :reload, 'service[httpd]'
  33 end
 ```
--> `notifies :reload, 'service[httpd]`:第一引数にアクション、第二引数にリソースタイプを書く
+-> `notifies :reload, 'service[httpd]`:第一引数にアクション、第二引数にリソースタイプを書く.
+-> 実行は一度、キューに入り、実行処理の終盤に行われる.
+-> 即座に実行したい場合は`notifies :reload, 'service[httpd] :immediately`(immediatelyをつける)
+
+ - **Subscribe**
+ -> 何かのリソースに変化があった場合にアクションする
+
+`subscribe :restart, "template[hoge.conf]"`
+
