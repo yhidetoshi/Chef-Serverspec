@@ -65,6 +65,16 @@ service "httpd" do
 end
 ```
 -> サービスを起動し、自動起動を登録 : `action [:enable, :start]`
--> supports : `restart = >trueでなければchefはサービスのrestartを[stop + start]で代用するので可能であればrestartをtrueにした方が懸命`
+-> supports : `restart = >trueでなければchefはサービスのrestartを[stop + start]で代用するので可能であればrestartをtrueにした方が賢明`
 
-
+- **chef-server/clientで(例)httpd.confが着替えられたら再起動する**
+```
+ template "httpd.conf" do
+ 28  path "/etc/httpd/conf/httpd.conf"
+ 29  owner "root"
+ 30  group "rout"
+ 31  mode 0644
+ 32  notifies :reload, 'service[httpd]'
+ 33 end
+```
+-> `notifies :reload, 'service[httpd]`:第一引数にアクション、第二引数にリソースタイプを書く
