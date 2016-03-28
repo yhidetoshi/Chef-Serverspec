@@ -136,3 +136,19 @@ end
 - *file*
  - `cookbook_file`はノードへ転送
  - `file`はノード上のファイルを扱う
+```
+file "/usr/local/hogehoge/test_cookbook_file.txt" do
+ content "chef test for file"
+ owner "root"
+ group "root"
+ mode 755
+ action :create
+end
+
+- **route ルーティングテーブル**
+```
+route "10.0.1.10/32" do
+ gateway "ipaddress"
+ device eth1
+end
+```
