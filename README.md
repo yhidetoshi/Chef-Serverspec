@@ -81,8 +81,33 @@ end
 -> 実行は一度、キューに入り、実行処理の終盤に行われる.
 -> 即座に実行したい場合は`notifies :reload, 'service[httpd] :immediately`(immediatelyをつける)
 
- - **Subscribe**
- -> 何かのリソースに変化があった場合にアクションする
+- **Subscribe**
+  - 何かのリソースに変化があった場合にアクションする
 
-`subscribe :restart, "template[hoge.conf]"`
+-> `subscribe :restart, "template[hoge.conf]"`
 
+- **template**
+ - Attributeの値をテンプレート内で展開したい場合に利用する
+ - Attributeを一切使いない場合は`cookbook_file`を使って定義する
+```
+template "/etc/httpd/conf.d/mysite.conf" do
+  source "mysite.conf.erb"
+  owner	 "root"
+  group  "root"
+  mode   0644
+  action :create
+  variables({
+	:hostname => `/bin/hostname`.chomp
+  })
+end
+```
+ 
+- cookbook_fileの利用(静的ファイルを転送)
+ - クックブックに同封したファイルを任意のパスへ転送して配置できる
+
+-> /cookbooks/httpd/files/default/配下に転送したいファイルを設置
+```
+cookbook_file "/usr/local/hogehoge/test_cookbook_file.txt" do
+ mode 755
+end
+```
