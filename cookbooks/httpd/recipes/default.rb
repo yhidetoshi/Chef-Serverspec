@@ -37,3 +37,10 @@ template "httpd.conf" do
  notifies :reload, 'service[httpd]'
 end
 =end
+
+file "/usr/local/hogehoge" do
+ owner "root"
+ group "root"
+ mode 00755
+ action :create
+end
