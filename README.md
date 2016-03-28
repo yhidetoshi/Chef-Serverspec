@@ -102,7 +102,7 @@ template "/etc/httpd/conf.d/mysite.conf" do
 end
 ```
  
-- cookbook_fileの利用(静的ファイルを転送)
+- **cookbook_fileの利用(静的ファイルを転送)**
  - クックブックに同封したファイルを任意のパスへ転送して配置できる
 
 -> /cookbooks/httpd/files/default/配下に転送したいファイルを設置
