@@ -146,3 +146,9 @@ default['mysql']['db_name'] = 'hoge'
 default['mysql']['user']['name']= 'hogeadmin'
 default['mysql']['user']['password'] = 'hogepassword'
 ```
+
+/chef-repo/cookbooks/wordpress/templates/default/wp-config.php.erb
+```
+define('DB_NAME', '<%= @db_name %>');
+define('DB_USER', '<%= @db_user %>');
+```
