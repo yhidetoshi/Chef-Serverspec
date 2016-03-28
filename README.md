@@ -57,5 +57,14 @@ case node[:platform]
 end
 ```
 
+- **サービスの設定**
+```
+service "httpd" do
+ action [:enable, :start]
+ supports :status => true, :restart => true, :reload => true
+end
+```
+-> サービスを起動し、自動起動を登録 : `action [:enable, :start]`
+-> supports : `restart = >trueでなければchefはサービスのrestartを[stop + start]で代用するので可能であればrestartをtrueにした方が懸命`
 
 
