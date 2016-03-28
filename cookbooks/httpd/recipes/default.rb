@@ -38,9 +38,10 @@ template "httpd.conf" do
 end
 =end
 
-file "/usr/local/hogehoge" do
+file "/usr/local/hogehoge/test_cookbook_file.txt" do
+ content "chef test for file"
  owner "root"
  group "root"
- mode 00755
+ mode 755
  action :create
 end
