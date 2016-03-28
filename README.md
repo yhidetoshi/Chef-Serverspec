@@ -57,5 +57,57 @@ case node[:platform]
 end
 ```
 
+- **サービスの設定**
+```
+service "httpd" do
+ action [:enable, :start]
+ supports :status => true, :restart => true, :reload => true
+end
+```
+-> サービスを起動し、自動起動を登録 : `action [:enable, :start]`
+-> supports : `restart = >trueでなければchefはサービスのrestartを[stop + start]で代用するので可能であればrestartをtrueにした方が賢明`
 
+- **Nofication(例)httpd.confが着替えられたら再起動する**
+```
+ template "httpd.conf" do
+   path "/etc/httpd/conf/httpd.conf"
+   owner "root"
+   group "rout"
+   mode 0644
+   notifies :reload, 'service[httpd]'
+ end
+```
+-> `notifies :reload, 'service[httpd]`:第一引数にアクション、第二引数にリソースタイプを書く.
+-> 実行は一度、キューに入り、実行処理の終盤に行われる.
+-> 即座に実行したい場合は`notifies :reload, 'service[httpd] :immediately`(immediatelyをつける)
 
+- **Subscribe**
+  - 何かのリソースに変化があった場合にアクションする
+
+-> `subscribe :restart, "template[hoge.conf]"`
+
+- **template**
+ - Attributeの値をテンプレート内で展開したい場合に利用する
+ - Attributeを一切使いない場合は`cookbook_file`を使って定義する
+```
+template "/etc/httpd/conf.d/mysite.conf" do
+  source "mysite.conf.erb"
+  owner	 "root"
+  group  "root"
+  mode   0644
+  action :create
+  variables({
+	:hostname => `/bin/hostname`.chomp
+  })
+end
+```
+ 
+- **cookbook_fileの利用(静的ファイルを転送)**
+ - クックブックに同封したファイルを任意のパスへ転送して配置できる
+
+-> /cookbooks/httpd/files/default/配下に転送したいファイルを設置
+```
+cookbook_file "/usr/local/hogehoge/test_cookbook_file.txt" do
+ mode 755
+end
+```
