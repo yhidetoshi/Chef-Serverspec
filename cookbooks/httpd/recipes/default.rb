@@ -23,3 +23,17 @@ service "httpd" do
  action [:enable, :start]
  supports :status => true, :restart => true, :reload => true
 end
+
+cookbook_file "/usr/local/hogehoge/test_cookbook_file.txt" do
+ mode 755
+end
+
+=begin
+template "httpd.conf" do
+ path "/etc/httpd/conf/httpd.conf"
+ owner "root"
+ group "rout"
+ mode 0644
+ notifies :reload, 'service[httpd]'
+end
+=end
