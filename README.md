@@ -111,3 +111,24 @@ cookbook_file "/usr/local/hogehoge/test_cookbook_file.txt" do
  mode 755
 end
 ```
+
+- **ifconfigの設定**
+```
+ifconfig "192.168.30.2" do
+ device "eth0"
+end
+```
+
+- **mount**
+```
+mount "/mnt/volume1" do
+ device "volume1"
+ device_type :label
+ fstype "xfs"
+ options "rw"
+end
+```
+- **script**
+ - 冪等性を保証しない。基本的には毎回実行される
+  - createを1行書いて、毎回の実行を阻止する方法を取れる 
+ -  `create` : すでにファイルがある場合は実行されない 
