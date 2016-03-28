@@ -178,3 +178,15 @@ define('DB_USER', '<%= @db_user %>');
   - user
   - 鍵情報など暗号化して格納してセキュアに使うこともできる
  
+- roleを利用
+roles/web.json
+```
+{
+  "name": "web",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "run_list": [
+	"recipe[httpd]"
+  ]
+}
+```
