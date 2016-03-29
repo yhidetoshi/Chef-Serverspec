@@ -239,8 +239,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
  end
 ```
-- プロビジョニングで作成
+- プロビジョニングを実行
 ```
 vagrant up --provision
 ```
 
+- 随時プロビジョニングを実行
+```
+vagrant up --provision
+
+```
