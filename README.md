@@ -208,7 +208,7 @@ cat nodes/chef_client3.json
 }
 ```
 
-### Vagrantから直接cookbookを適用する(chefに夜自動プロビジョニング)
+### Vagrantから直接cookbookを適用する(chef自動プロビジョニング)
 - vagrant-omnibus のインストール
 ```
 vagrant plugin install vagrant-omnibus
