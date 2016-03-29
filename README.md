@@ -179,7 +179,10 @@ define('DB_USER', '<%= @db_user %>');
   - 鍵情報など暗号化して格納してセキュアに使うこともできる
  
 - roleを利用
+
 roles/web.json
+
+-> roleで'web'を作り、`recipe`を追加
 ```
 {
   "name": "web",
@@ -188,5 +191,19 @@ roles/web.json
   "run_list": [
 	"recipe[httpd]"
   ]
+}
+```
+
+cat nodes/chef_client3.json                                                                               
+-> 上のroleで作った名前を`role[<role名>]`を書く
+
+```
+{
+   "run_list": [
+        "role[web]"
+   ],
+   "automatic":{
+	"ipaddress": "chef_client3"
+    }
 }
 ```
