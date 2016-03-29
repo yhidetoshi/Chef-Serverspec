@@ -249,3 +249,34 @@ vagrant up --provision
 vagrant up --provision
 
 ```
+
+### Serverspecの利用
+rubyで書かれたサーバの状態をテストするテストフレームワーク
+
+- インストール
+```
+$ sudo gem install serverspec
+```
+
+- serverspecの初期化
+`$ serverspec-init`
+
+```
+Select OS type:
+  1) UN*X
+  2) Windows
+Select number: 1　　←テスト対象サーバのOS種別を選択
+Select a backend type:
+  1) SSH
+  2) Exec (local)
+Select number: 1　　←テスト実行のタイプを選択
+Vagrant instance y/n: n ←Vagrantの管理下のインスタンスかどうかを選択
+Input target host name: server-01 ←テスト対象サーバのホスト名を入力
+ + spec/
+ + spec/server-01/
+ + spec/server-01/httpd_spec.rb
+ + spec/spec_helper.rb
+ + Rakefile
+
+```
+
