@@ -24,7 +24,7 @@ service "httpd" do
  supports :status => true, :restart => true, :reload => true
 end
 
-cookbook_file "/usr/local/hogehoge/test_cookbook_file.txt" do
+cookbook_file "/usr/local/hogehoge/test_cookbook_local_file.txt" do
  mode 755
 end
 

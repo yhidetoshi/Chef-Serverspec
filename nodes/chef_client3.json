@@ -3,6 +3,6 @@
         "role[web]"
    ],
    "automatic":{
-	"ipaddress": "chef_client2"
+	"ipaddress": "chef_client3"
     }
 }
