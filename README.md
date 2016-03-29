@@ -208,7 +208,7 @@ cat nodes/chef_client3.json
 }
 ```
 
-### Vagrantから直接cookbookを適用する(chefに夜自動プロビジョニング)
+### Vagrantから直接cookbookを適用する(chef自動プロビジョニング)
 - vagrant-omnibus のインストール
 ```
 vagrant plugin install vagrant-omnibus
@@ -239,8 +239,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
  end
 ```
-- プロビジョニングで作成
+- プロビジョニングを実行
 ```
 vagrant up --provision
 ```
 
+- 随時プロビジョニングを実行
+```
+vagrant up --provision
+
+```
