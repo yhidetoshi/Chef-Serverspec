@@ -208,6 +208,19 @@ cat nodes/chef_client3.json
 }
 ```
 
+### 外部のcookbookを利用する(opscode)
+```
+# pwd 
+/Vagrant/Base-OS-Cent
+
+# knife cookbook site install selinux
+-> cookbooksディレクトリに追加されたので,site-cookbooksに移動
+-> これでいつも通りにknifeコマンドを当てればいい
+```
+
+(ex)selinuxをOFFにする場合は`"recipe[selinux::disabled]"`とした。
+
+
 ### Vagrantから直接cookbookを適用する(chef自動プロビジョニング)
 - vagrant-omnibus のインストール
 ```
