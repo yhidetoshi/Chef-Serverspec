@@ -24,6 +24,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  config.vm.define :chef_client3 do |chef_client3|
+    chef_client3.vm.box = "centos"
+    chef_client3.vm.hostname = "chef-client3"
+    chef_client3.vm.network "private_network", ip: "192.168.33.12"
+    
+    chef_client3.vm.provider "virtualbox" do |v3|
+	v3.cpus = 1
+	v3.memory = 512
+    end
+  end
+
  config.omnibus.chef_version = :latest
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "./cookbooks"
