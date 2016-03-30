@@ -293,3 +293,8 @@ Input target host name: server-01 ←テスト対象サーバのホスト名を�
 
 ```
 
+
+- serverspecを実行する
+```
+# rake spec
+```
