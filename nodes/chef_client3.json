@@ -1,6 +1,6 @@
 {
    "run_list": [
-        "role[web]"
+        "recipe[yum::remi-php56]"
    ],
    "automatic":{
 	"ipaddress": "chef_client3"

@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+include Serverspec::Type
 =begin
 describe package('httpd') do
   it { should be_installed }
@@ -11,11 +11,12 @@ describe service('httpd') do
   it { should be_enabled   }
   it { should be_running   }
 end
-=end
+
 
 describe port(80) do
   it { should be_listening }
 end
+=end
 
 =begin
 describe file('/etc/httpd/conf/httpd.conf') do
@@ -32,4 +33,8 @@ end
 
 describe command('which httpd') do
  its(:exit_status) {should eq 0}
+end
+
+describe command('netstat -nap | grep 80') do
+ its(:exit_status) {should eq 80}
 end

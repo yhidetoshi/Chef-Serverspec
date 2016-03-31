@@ -1,6 +1,6 @@
 {
    "run_list": [
-        "recipe[selinux::disabled]"
+        "recipe[yum::remi]"
    ],
    "automatic":{
 	"ipaddress": "chef_client2"

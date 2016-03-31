@@ -3,7 +3,7 @@ require 'rspec/core/rake_task'
 require 'yaml'
 task :spec    => 'spec:all'
 task :default => :spec
-#attributes = YAML.load_file('attributes.yml')
+attributes = YAML.load_file('attributes.yml')
 
 namespace :spec do
   targets = []
