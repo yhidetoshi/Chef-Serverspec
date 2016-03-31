@@ -298,3 +298,26 @@ Input target host name: server-01 ←テスト対象サーバのホスト名を�
 ```
 # rake spec
 ```
+
+
+### Wordpressの自動構築
+nodes/target_host.json
+```
+{
+   "run_list": [
+        "recipe[yum::epel]",
+        "recipe[yum::remi]",
+	"recipe[yum::remi-php56]",
+	"recipe[php56::php]",
+	"recipe[nginx]",
+	"recipe[git::git]",
+  	"recipe[mysqld]",
+	"recipe[wordpress-built]"
+   ],
+   "automatic":{
+	"ipaddress": "chef_client3"
+    }
+}
+```
+
+以下、実行内容の説明
