@@ -300,7 +300,7 @@ Input target host name: server-01 ←テスト対象サーバのホスト名を�
 ```
 
 
-### Wordpressの自動構築
+### Wordpressの自動構築のrun_list
 nodes/target_host.json
 ```
 {
@@ -319,5 +319,4 @@ nodes/target_host.json
     }
 }
 ```
-
-以下、実行内容の説明
+各cookbookの役割はコード参照。
