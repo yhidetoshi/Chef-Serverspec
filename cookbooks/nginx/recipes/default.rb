@@ -1,9 +1,6 @@
-case node[:platform]
- when 'redhat', 'centos'
-  package "nginx" do
-    action :install
+package "nginx" do
+  action :install
   not_if 'which nginx'
- end
 end
 
 service "nginx" do
