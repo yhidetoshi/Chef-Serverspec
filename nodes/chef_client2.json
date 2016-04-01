@@ -1,12 +1,6 @@
 {
    "run_list": [
-        "recipe[yum::epel]",
-        "recipe[yum::remi]",
-	"recipe[php56::php]",
-	"recipe[nginx]",
-	"recipe[git::git]",
-  	"recipe[mysqld]",
-	"recipe[wordpress-built]"
+	"recipe[python2.7]"
    ],
    "automatic":{
 	"ipaddress": "chef_client2"

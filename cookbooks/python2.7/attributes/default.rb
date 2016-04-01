@@ -1,0 +1,5 @@
+default['file']['download'] = 'https://github.com/yhidetoshi/python2.7.6'
+default['path']['file'] = '/usr/local/python2.7.6'
+default['path']['prefix'] = '/opt/python'
+default['from']['ln'] = '/opt/python/bin/python'
+default['to']['ln'] = '/usr/bin/python'
