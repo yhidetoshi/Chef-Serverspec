@@ -1,0 +1,20 @@
+{
+  "id": "test1",
+  "groups": [
+    {
+      "name": "test",
+      "gid": 2001
+    }
+  ],
+  "users": [
+    {
+      "name": "test1",
+      "home": "/home/test1",
+      "shell": "/bin/bash",
+      "uid": 2001,
+      "gid": 2001
+    }
+  ]
+}
+
+
