@@ -320,3 +320,69 @@ nodes/target_host.json
 }
 ```
 各cookbookの役割はコード参照。
+
+### Data_bagsは複数のノードで共有やデータの暗号化などで使う
+- ユーザ作成をする。(パスワードはopensslでハッシュ化)
+ ->.jsonで定義するカ所のpassword`ハッシュ化`が必要. 平文だと無理だった。
+
+`# knife data bag create users -z` : databagsにuserディレクトリを作成
+-> `-z`を使うとオプションで鍵を無視できる。
+
+</data_bags/users/test1.json>
+`password:`は『password』を`openssl passwd -1 'password'`でハッシュ化。
+```
+{
+  "id": "test2",
+  "groups": [
+    {
+      "name": "test",
+      "gid": 2001
+    }
+  ],
+  "users": [
+    {
+      "name": "test2",
+      "home": "/home/test2",
+      "shell": "/bin/bash",
+      "password": "$1$23z7JGCv$9dHBNA3FmOLTfb.RAvdgQ.",
+      "uid": 2002,
+      "gid": 2001
+    }
+  ]
+}
+```
+
+[adduser]をcookbookを作成してrecipeに書きを書いた
+```
+data_ids = data_bag('users')
+
+data_ids.each do |id|
+  item = data_bag_item('users',id)
+
+  item['groups'].each do |g|
+    group g['name'] do
+      gid g['gid']
+      action :create
+    end
+  end
+
+  item['users'].each do |u|
+    user u['name'] do
+      home  u['home']
+      shell u['shell']
+      password u['password']
+      uid   u['uid']
+      gid   u['gid']
+      supports :manage_home => true
+      action :create
+    end
+  end
+
+end
+```
+- suコマンドで確認
+```
+[vagrant@chef-client2 ~]$ su - test2
+Password:
+[test2@chef-client2 ~]$
+```
