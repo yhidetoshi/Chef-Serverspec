@@ -1,6 +1,6 @@
 {
    "run_list": [
-	"recipe[adduser]"
+	"recipe[cron]"
    ],
    "automatic":{
 	"ipaddress": "chef_client2"
