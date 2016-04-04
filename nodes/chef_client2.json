@@ -1,6 +1,6 @@
 {
    "run_list": [
-	"recipe[openjdk::v18]"
+	"recipe[jenkins]"
    ],
    "automatic":{
 	"ipaddress": "chef_client2"
