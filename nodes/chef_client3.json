@@ -1,6 +1,6 @@
 {
    "run_list": [
-	"recipe[adduser]"
+	"recipe[python2.7]"
    ],
    "automatic":{
 	"ipaddress": "chef_client3"

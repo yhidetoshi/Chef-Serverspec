@@ -1,6 +1,6 @@
 {
    "run_list": [
-	"recipe[cron]"
+	"recipe[openjdk::v18]"
    ],
    "automatic":{
 	"ipaddress": "chef_client2"
