@@ -1,0 +1,10 @@
+{
+   "run_list": [
+	"recipe[git::git]",
+	"recipe[yum::epel]",
+	"recipe[nginx]"
+   ],
+   "automatic":{
+	"ipaddress": "docker_nginx"
+    }
+}
