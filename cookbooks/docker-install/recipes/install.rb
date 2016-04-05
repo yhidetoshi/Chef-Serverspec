@@ -1,6 +1,7 @@
 include_recipe "docker-install::add-repo"
 
-package "docker-io" do
+package "install docker modules" do
+  package_name ['docker-io', 'device-mapper-libs']
   action :install
 end
 

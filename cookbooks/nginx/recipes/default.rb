@@ -1,12 +1,14 @@
 package "nginx" do
   action :install
-  not_if 'which nginx'
+#  not_if 'which nginx'
 end
 
+=begin
 service "nginx" do
  action [:enable, :start]
  supports :status => true, :restart => true, :reload => true
 end
+=end
 
 template "/etc/nginx/conf.d/wp.conf" do
   source "wordpress.conf.erb"
