@@ -1,5 +1,7 @@
 ### MacにインストールしたchefでvagrantのVMを管理する
 
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/chef_mac/chef-icon.png)
+
 ### Vagrantをデプロイする
 ```
 - 対象仮想マシンにChefをインストールする。
