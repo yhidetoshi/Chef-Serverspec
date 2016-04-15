@@ -277,9 +277,9 @@ $ sudo gem install serverspec
 ```
 
 - **serverspecの初期化**
-`$ serverspec-init`
-
 ```
+$ serverspec-init
+--- 
 Select OS type:
   1) UN*X
   2) Windows
@@ -295,6 +295,7 @@ Input target host name: server-01 ←テスト対象サーバのホスト名を�
  + spec/server-01/httpd_spec.rb
  + spec/spec_helper.rb
  + Rakefile
+---
 
 ```
 `spec/spec_helper.rb`：Serverspecを使ってテストを実行する際のテスト設定などを記述
