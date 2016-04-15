@@ -266,6 +266,9 @@ vagrant up --provision
 ```
 
 ### Serverspecの利用
+
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/chef_mac/serverspec-icon.png)
+
 rubyで書かれたサーバの状態をテストするテストフレームワーク
 
 - インストール
