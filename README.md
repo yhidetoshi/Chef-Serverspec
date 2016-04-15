@@ -298,8 +298,41 @@ Input target host name: server-01 ←テスト対象サーバのホスト名を�
 ---
 
 ```
-`spec/spec_helper.rb`：Serverspecを使ってテストを実行する際のテスト設定などを記述
-`spec/<target_host>/<test_name>_spec.rb`：テストスクリプト本体. この_spec.rbにテストを書いていく
+- `spec/spec_helper.rb`：Serverspecを使ってテストを実行する際のテスト設定などを記述
+- `spec/<target_host>/<test_name>_spec.rb`：テストスクリプト本体. この_spec.rbにテストを書いていく
+- デフォルトで下記のsample_spec.rbが置かれている
+
+**[sample_spec.rb]**
+```
+require 'spec_helper'
+
+describe package('httpd'), :if => os[:family] == 'redhat' do
+  it { should be_installed }
+end
+
+describe package('apache2'), :if => os[:family] == 'ubuntu' do
+  it { should be_installed }
+end
+
+describe service('httpd'), :if => os[:family] == 'redhat' do
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe service('apache2'), :if => os[:family] == 'ubuntu' do
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe service('org.apache.httpd'), :if => os[:family] == 'darwin' do
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe port(80) do
+  it { should be_listening }
+end
+```
 
 - **serverspecを実行する**
 ```
