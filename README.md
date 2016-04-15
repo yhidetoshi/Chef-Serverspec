@@ -271,12 +271,12 @@ vagrant up --provision
 
 rubyで書かれたサーバの状態をテストするテストフレームワーク
 
-- インストール
+- **インストール**
 ```
 $ sudo gem install serverspec
 ```
 
-- serverspecの初期化
+- **serverspecの初期化**
 `$ serverspec-init`
 
 ```
@@ -297,9 +297,10 @@ Input target host name: server-01 ←テスト対象サーバのホスト名を�
  + Rakefile
 
 ```
+`spec/spec_helper.rb`：Serverspecを使ってテストを実行する際のテスト設定などを記述
+`spec/<target_host>/<test_name>_spec.rb`：テストスクリプト本体. この_spec.rbにテストを書いていく
 
-
-- serverspecを実行する
+- **serverspecを実行する**
 ```
 # rake spec
 ```
