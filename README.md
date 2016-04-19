@@ -334,6 +334,21 @@ describe port(80) do
 end
 ```
 
+**[確認したテスト]**
+- package
+- command
+
+**[_spec.rb]**
+```
+describe package('python') do
+ it { should be_installed }
+end
+
+describe command('which perl') do
+  its(:exit_status){should eq 0}
+end
+```
+
 - **serverspecを実行する**
 ```
 # rake spec
