@@ -336,16 +336,38 @@ end
 
 **[確認したテスト]**
 - package
+- port
 - command
+- user
+- service
+- 
 
 **[_spec.rb]**
 ```
 describe package('python') do
- it { should be_installed }
+ it { expect be_installed }
+end
+
+describe port(80) do
+  it { expect be_listening}
+end
+
+describe package('perl') do
+ it { expect  be_installed }
 end
 
 describe command('which perl') do
   its(:exit_status){should eq 0}
+end
+
+
+describe user('vagrant') do
+  it { expect exist}
+end
+
+describe service('httpd') do
+  it { expect be_enabled   }
+  it { expect be_running   }
 end
 ```
 
