@@ -339,11 +339,16 @@ end
 
 **[確認したテスト]**
 - package
+  - should be_installed
 - port
+  - should be_listening 
 - command
+  - exit_status 
 - host
-- service
+  - should be_reachable  
 - file
+  - should be_executable
+  - should contain
 - default_gateway
 - 
 
