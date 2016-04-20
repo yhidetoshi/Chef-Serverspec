@@ -338,12 +338,17 @@ end
 ```
 
 **[確認したテスト]**
+(serverspecではRspec2ではなくRspec3が対応している模様 ※書き方が異なるので注意)
+
+-> http://serverspec.org/changes-of-v2.html
+
 - package
   - should be_installed
 - port
   - should be_listening 
 - command
-  - exit_status 
+  - :exit_status 
+  - :stdout
 - host
   - should be_reachable  
 - file
