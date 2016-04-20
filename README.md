@@ -351,6 +351,7 @@ end
   - :stdout
 - host
   - should be_reachable  
+  - should be_resolvable
 - file
   - should be_executable
   - should contain
