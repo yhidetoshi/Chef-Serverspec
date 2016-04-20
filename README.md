@@ -344,6 +344,8 @@ end
 
 - package
   - should be_installed
+  - should be_installed.with_version('X.X.X')
+  - should be_installed.by('gem').with_version('X.X.X')
 - port
   - should be_listening 
 - command
@@ -367,6 +369,16 @@ require 'spec_helper'
 # packageがインストールされているか確認
 describe package('python') do
  it { should be_installed }
+end
+
+# gemとして指定のバージョンがインストールされているか確認
+describe package('bundler') do
+  it { should be_installed.by('gem').with_version('1.11.2') }
+end
+
+# インストールしたパッケージのバージョン確認
+describe package('nginx') do
+  it { should be_installed.with_version('1.8.1')}
 end
 
 # ポートがListenしているかを確認
