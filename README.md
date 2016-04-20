@@ -389,6 +389,11 @@ describe command('whoami') do
   its(:stdout) { should eq "root\n" }
 end
 
+# インストールされているrubyのバージョンを確認
+describe command('ruby -v') do
+  its(:stdout) { should match /ruby 2\.3\.0p0/ }
+end
+
 # リーチャビリティのテスト
 describe host('8.8.8.8') do
   it { should be_reachable}
