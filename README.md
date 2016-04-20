@@ -342,6 +342,9 @@ end
 
 -> http://serverspec.org/changes-of-v2.html
 
+- service
+  - should be_enabled
+  - should be_running
 - package
   - should be_installed
   - should be_installed.with_version('X.X.X')
@@ -365,6 +368,12 @@ end
 **[_spec.rb]**
 ```
 require 'spec_helper'
+
+# サービスが起動&自動起動設定されているかを確認
+describe service('nginx') do
+  it { should be_enabled }
+  it { should be_running }
+end
 
 # packageがインストールされているか確認
 describe package('python') do
@@ -419,7 +428,7 @@ end
 # デフォゲのテスト
 describe default_gateway do
   its(:interface) { should eq 'eth0'}
-  its(:ipaddress) { should eq '153.126.206.1'}
+  its(:ipaddress) { should eq 'X.X.X.X'}
 end
 
 # 実行可能かテスト
