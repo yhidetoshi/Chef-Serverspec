@@ -338,36 +338,45 @@ end
 - package
 - port
 - command
-- user
+- host
 - service
+- file
+- default_gateway
 - 
 
 **[_spec.rb]**
 ```
+require 'spec_helper'
+
+# packageがインストールされているか確認
 describe package('python') do
- it { expect be_installed }
+ it { should be_installed }
 end
 
+# ポートがListenしているかを確認
 describe port(80) do
-  it { expect be_listening}
+  it { should be_listening}
 end
 
-describe package('perl') do
- it { expect  be_installed }
-end
-
+# コマンドを使って確認
 describe command('which perl') do
   its(:exit_status){should eq 0}
 end
 
-
-describe user('vagrant') do
-  it { expect exist}
+# リーチャビリティのテスト
+describe host('8.8.8.8') do
+  it { should be_reachable}
 end
 
-describe service('httpd') do
-  it { expect be_enabled   }
-  it { expect be_running   }
+# デフォゲのテスト
+describe default_gateway do
+  its(:interface) { should eq 'eth0'}
+  its(:ipaddress) { should eq '153.126.206.1'}
+end
+
+# 実行可能かテスト
+describe file('/etc/init.d/nginx') do
+  it { should be_executable}
 end
 ```
 
