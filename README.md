@@ -349,6 +349,8 @@ end
 - command
   - :exit_status 
   - :stdout
+    - should match
+    - should eq
 - host
   - should be_reachable  
   - should be_resolvable
@@ -356,7 +358,7 @@ end
   - should be_executable
   - should contain
 - default_gateway
-- 
+
 
 **[_spec.rb]**
 ```
@@ -377,9 +379,24 @@ describe command('which perl') do
   its(:exit_status){should eq 0}
 end
 
+# dnsの確認
+describe command('cat /etc/resolv.conf') do
+  its(:stdout) { should match /133.242.0.3/ }
+end
+
+# ユーザの確認
+describe command('whoami') do
+  its(:stdout) { should eq "root\n" }
+end
+
 # リーチャビリティのテスト
 describe host('8.8.8.8') do
   it { should be_reachable}
+end
+
+# 名前解決のテスト
+describe host('www.google.com') do
+  it { should be_resolvable}
 end
 
 # デフォゲのテスト
@@ -392,6 +409,12 @@ end
 describe file('/etc/init.d/nginx') do
   it { should be_executable}
 end
+
+# config設定の確認テスト
+describe file('/etc/nginx/conf.d/default.conf') do
+  it { should contain 'server_name localhost'}
+end
+
 ```
 
 - **serverspecを実行する**
