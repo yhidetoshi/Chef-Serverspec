@@ -402,7 +402,7 @@ end
 
 # dnsの確認
 describe command('cat /etc/resolv.conf') do
-  its(:stdout) { should match /133.242.0.3/ }
+  its(:stdout) { should match /X.X.X.X/ }
 end
 
 # ユーザの確認
