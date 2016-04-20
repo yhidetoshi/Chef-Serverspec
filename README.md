@@ -270,6 +270,7 @@ vagrant up --provision
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/chef_mac/serverspec-icon.png)
 
 rubyで書かれたサーバの状態をテストするテストフレームワーク
+
 (参考) シナリオテストの検証を実施した環境:sakura-vps @CentOS release 6.7 (Final)
 -> `spec/localhost/hoge_spec.rb`
 
