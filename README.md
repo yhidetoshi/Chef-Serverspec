@@ -385,6 +385,9 @@ end
 - user
   - should have_home_directory
   - should have_login_shell
+- yumrepo
+  - should exist
+  - should be_enabled
 
 - (routing_table)
 - (monitored_by)
@@ -504,6 +507,12 @@ end
 # ログインシェルの確認
 describe user('root') do
   it { should have_login_shell '/bin/bash' }
+end
+
+# yum-repoの確認
+describe yumrepo('epel') do
+  it { should exist}
+  it { should be_enabled}
 end
 ```
 
