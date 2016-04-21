@@ -347,6 +347,8 @@ end
 - service
   - should be_enabled
   - should be_running
+  - should_not be_enabled
+  - should_not be_running
 - package
   - should be_installed
   - should be_installed.with_version('X.X.X')
@@ -365,16 +367,25 @@ end
 - file
   - should be_executable
   - should contain
+  - should exist
+  - should be_directory
 - default_gateway
   - :interface
   - :ipaddress
 - interface
+  - should exist
+  - should be_up
   - should have_ipv4_address 
+- cron
+  - should have_entry 
 - selinux
   - should be_disabled
   - shoudl be_enforcing
   - should be_permissive
-- 
+- user
+  - should have_home_directory
+  - should have_login_shell
+
 - (routing_table)
 - (monitored_by)
 
@@ -386,6 +397,12 @@ require 'spec_helper'
 describe service('nginx') do
   it { should be_enabled }
   it { should be_running }
+end
+
+# iptablesが止まっていることを確認
+describe service('iptables') do
+  it { should_not be_running }
+  it { should_not be_enabled }
 end
 
 # packageがインストールされているか確認
@@ -455,8 +472,16 @@ describe file('/etc/nginx/conf.d/default.conf') do
   it { should contain 'server_name localhost'}
 end
 
+# ディレクトリが存在するか
+describe file('/var/log/nginx') do
+  it { should exist}
+  it { should be_directory }
+end
+
 # インターフェースの確認
 describe interface('eth0') do
+  it { should exist }
+  it { should be_up }
   it { should have_ipv4_address('X.X.X.X') }
 end
 
@@ -467,6 +492,19 @@ describe selinux do
 #  it { should be_permissive }
 end
 
+describe cron do
+  it { should have_entry '< $cron -l で出力されるものを書く>' }
+end
+
+# ホームディレクトリがあるか確認
+describe user('root') do
+  it { should have_home_directory '/root' }
+end
+
+# ログインシェルの確認
+describe user('root') do
+  it { should have_login_shell '/bin/bash' }
+end
 ```
 
 - **serverspecを実行する**
