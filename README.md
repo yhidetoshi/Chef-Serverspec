@@ -337,7 +337,9 @@ describe port(80) do
 end
 ```
 
-**[確認したテスト]**
+**[確認したテスト ※()は未検証 ]**
+(参考:RESOURCE TYPES)-> http://serverspec.org/resource_types.html#cron
+
 (serverspecではRspec2ではなくRspec3が対応している模様 ※書き方が異なるので注意)
 
 -> http://serverspec.org/changes-of-v2.html
@@ -350,7 +352,8 @@ end
   - should be_installed.with_version('X.X.X')
   - should be_installed.by('gem').with_version('X.X.X')
 - port
-  - should be_listening 
+  - should be_listening
+  - should be_listening.with('tcp')
 - command
   - :exit_status 
   - :stdout
@@ -363,7 +366,17 @@ end
   - should be_executable
   - should contain
 - default_gateway
-
+  - :interface
+  - :ipaddress
+- interface
+  - should have_ipv4_address 
+- selinux
+  - should be_disabled
+  - shoudl be_enforcing
+  - should be_permissive
+- 
+- (routing_table)
+- (monitored_by)
 
 **[_spec.rb]**
 ```
@@ -393,6 +406,7 @@ end
 # ポートがListenしているかを確認
 describe port(80) do
   it { should be_listening}
+  it { should be_listening.with('tcp') }
 end
 
 # コマンドを使って確認
@@ -439,6 +453,18 @@ end
 # config設定の確認テスト
 describe file('/etc/nginx/conf.d/default.conf') do
   it { should contain 'server_name localhost'}
+end
+
+# インターフェースの確認
+describe interface('eth0') do
+  it { should have_ipv4_address('X.X.X.X') }
+end
+
+# selinuxの状態確認
+describe selinux do
+  it { should be_disabled}
+#  it { should be_enforcing }
+#  it { should be_permissive }
 end
 
 ```
