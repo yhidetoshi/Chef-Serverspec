@@ -4,19 +4,20 @@
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/chef_mac/chef-icon.png)
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/chef_mac/serverspec-icon.png)
 
-### Vagrantをデプロイする
+### Vagrantをデプロイ
 ```
 - 対象仮想マシンにChefをインストールする。
 $ knife solo bootstrap vagrant@vmdev
 
-- nodesディレクトリ : 
-$ Vagrant/Base-OS-Cent/nodes/
+- nodesディレクトリ(※自分の検証環境のパス) 
+/Users/hidetoshi/chef_mac
 
 - ファイルを作成
-$ chef_client2.json
+$ ./nodes/<node_name>.json
+
 
 - cookbookの適用
-$ knife solo cook root@chef_client2
+$ knife solo cook root@<node_name>
 ```
 
 ### recipeの書き方メモ
