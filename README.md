@@ -18,6 +18,9 @@ $ ./nodes/<node_name>.json
 
 - cookbookの適用
 $ knife solo cook root@<node_name>
+
+- sshの鍵を利用した場合
+# knife solo cook <user>@<host> -i ~/.ssh/id_rsa
 ```
 
 ### recipeの書き方メモ
