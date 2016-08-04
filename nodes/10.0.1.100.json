@@ -1,0 +1,8 @@
+{
+   "run_list": [
+	"recipe[td-agent2]"
+   ],
+   "automatic":{
+	"ipaddress": "10.0.1.100"
+    }
+}

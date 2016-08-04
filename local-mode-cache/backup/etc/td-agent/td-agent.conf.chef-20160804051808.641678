@@ -1,0 +1,15 @@
+<source>
+  @type tail
+  path /var/log/nginx/access.log
+  tag nginx.access
+  pos_file /var/log/td-agent/access_log.pos
+  format nginx
+</source>
+
+<match nginx.**>
+  @type forward
+  <server>
+    host 10.0.1.100
+    port 24224
+  </server>
+</match>
