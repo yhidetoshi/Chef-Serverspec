@@ -1,6 +1,6 @@
 execute "install-td-agent2" do
   command <<-EOH
-    curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh | sh
+    sudo curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh | sh
   EOH
   action :run
 end
