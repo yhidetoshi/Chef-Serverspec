@@ -20,24 +20,6 @@ data_ids.each do |id|
       supports :manage_home => true
       action :create
     end
-  
-    home_dir = "/home/" + u['name']
-    ssh_dir = home_dir + "/.ssh"      
-
-    directory home_dir + "/.ssh" do
-      owner u['id'] 
-      group u['id']
-      mode 0700
-      action :create
-    end
-
-    file ssh_dir + "/authorized_keys" do
-      owner u['id']
-      mode 0600 
-      content u['key']
-      action :create_if_missing
-    end
-  
   end
 
 end

@@ -1,7 +1,4 @@
 package "git" do
-  action :install
+   action :install
  not_if 'which git'
 end
-
-
-

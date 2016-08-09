@@ -12,6 +12,7 @@
       "home": "/home/test1",
       "shell": "/bin/bash",
       "password": "password",
+      "key":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDE7RvT.....l",
       "uid": 2001,
       "gid": 2001
     }

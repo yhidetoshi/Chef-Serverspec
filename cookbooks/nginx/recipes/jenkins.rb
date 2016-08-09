@@ -14,7 +14,6 @@ template "/etc/nginx/conf.d/jenkins.conf" do
   group "root"
   mode 0644
   variables({
-	:hostname => `/bin/hostname`.chomp	
+	:hostname => `/bin/hostname`.chomp
   })
 end
-
