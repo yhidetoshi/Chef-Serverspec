@@ -365,6 +365,9 @@ rubyで書かれたサーバの状態をテストするテストフレームワ�
 (参考) シナリオテストの検証を実施した環境:sakura-vps @CentOS release 6.7 (Final)
 -> `spec/localhost/hoge_spec.rb`
 
+### ソースコード
+- https://github.com/yhidetoshi/Serverspec
+
 - **インストール**
 ```
 $ sudo gem install serverspec
